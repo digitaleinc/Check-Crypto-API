@@ -17,7 +17,7 @@ def process_usdt_trc20(message):
             contract_ret = transaction_info['contractRet']
             confirmed = transaction_info['confirmed']
             risk_transaction = transaction_info['riskTransaction']
-            transaction_date = int(transaction_info['timestamp'])/1000
+            transaction_date = int(transaction_info['timestamp']) / 1000
             transfer_info = transaction_info['transfersAllList'][0]
             from_address = transfer_info['from_address']
             to_address = transfer_info['to_address']
@@ -29,53 +29,62 @@ def process_usdt_trc20(message):
             # Check if transaction is confirmed
             if confirmed:
                 confirmed = "Yes"
+                status_conf = "✅"
             else:
                 confirmed = "No"
+                status_conf = "⭕️"
 
             # Check if transaction is risk
             if risk_transaction:
                 risk_transaction = "Yes"
+                status_risk = "❗️"
             else:
                 risk_transaction = "No"
+                status_risk = "✔️"
 
             # Check if sender's wallet is marked dirty or clear
             if status_sender:
                 status_sender = "dirty"
+                status_s = "🔴"
             else:
                 status_sender = "clear"
+                status_s = "🟢"
 
             # Check if reciever's wallet is marked dirty or clear
             if status_reciever:
                 status_reciever = "dirty"
+                status_r = "🔴"
             else:
                 status_reciever = "clear"
+                status_r = "🟢"
 
             converted_date = datetime.fromtimestamp(transaction_date)
 
             amount = int(amount_str) / (10 ** decimals)
 
-            bot.send_message(message.chat.id, f"Transaction Status: {contract_ret}\n"
-                                              f"Is confirmed: {confirmed}\n"
-                                              f"Token: USDT TRC20\n"
-                                              f"Transaction date: {converted_date}\n"
-                                              f"Amount: {amount}$\n"
+            bot.send_message(message.chat.id, f"🔗 <b>Transaction Status:</b> {contract_ret}\n"
+                                              f"{status_conf} <b>Is confirmed:</b> {confirmed}\n"
+                                              f"🔧 <b>Token:</b> USDT TRC20\n"
+                                              f"📆 <b>Transaction date:</b> {converted_date}\n"
+                                              f"💰 <b>Amount:</b> {amount}$\n"
                                               f"\n"
-                                              f"From: {from_address}\n"
-                                              f"To: {to_address}\n"
+                                              f"➡️ <b>From:</b> {from_address}\n"
+                                              f"⬅️ <b>To:</b> {to_address}\n"
                                               f"\n"
-                                              f"Is transaction on risk: {risk_transaction}\n"
+                                              f"{status_risk} <b>Is transaction on risk:</b> {risk_transaction}\n"
                                               f"\n"
-                                              f"Wallet statuses (risk):\n"
-                                              f"Sender: {status_sender}\n"
-                                              f"Receiver: {status_reciever}\n"
-                                              f"\n"
-                                              f"By CryptoCheck Bot", reply_to_message_id=message.message_id)
+                                              f"🔍 <b>Wallet statuses (risk):</b>\n"
+                                              f"{status_s} <b>Sender:</b> {status_sender}\n"
+                                              f"{status_r} <b>Receiver:</b> {status_reciever}\n"
+                                              f"<i>Bot was created by A.K.</i>\n"
+                                              f"<b>GitHub ► https://github.com/digitaleinc</b>",
+                             parse_mode='HTML',
+                             reply_to_message_id=message.message_id)
         except KeyError:
             bot.send_message(message.chat.id, "No info/wrong input",
                              reply_to_message_id=message.message_id)
     else:
         bot.send_message(message.chat.id, "No info/wrong input", reply_to_message_id=message.message_id)
-
 
 # def process_tron(message):
 #     logger(message)
