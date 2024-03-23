@@ -1,5 +1,5 @@
 from datetime import datetime
-from functions import logger
+from modules.functions import logger
 from config import bot
 
 import requests

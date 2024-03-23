@@ -1,6 +1,6 @@
 from modules.markup import gen_markup
-from processing import process_usdt_trc20
-from functions import logger
+from modules.processing import process_usdt_trc20
+from modules.functions import logger
 
 from config import bot
 
