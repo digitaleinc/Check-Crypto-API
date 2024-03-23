@@ -76,6 +76,7 @@ def process_usdt_trc20(message):
                                               f"🔍 <b>Wallet statuses (risk):</b>\n"
                                               f"{status_s} <b>Sender:</b> {status_sender}\n"
                                               f"{status_r} <b>Receiver:</b> {status_reciever}\n"
+                                              f"\n"
                                               f"<i>Bot was created by A.K.</i>\n"
                                               f"<b>GitHub ► https://github.com/digitaleinc</b>",
                              parse_mode='HTML',
