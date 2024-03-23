@@ -9,5 +9,8 @@ Simple Telegram Bot that checks USDT TRC20 information of transactions. Using re
 
 ## Enjoy it!
 
+### Continue work
+In the further updates could be added TRX and BTC support
+
 ### Examples:
 ![Screenshot_1](https://github.com/digitaleinc/Check-Crypto-API/assets/120760764/076eece5-6916-4160-84bc-cc9f0605d834)
