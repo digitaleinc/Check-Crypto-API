@@ -40,7 +40,8 @@ def text_handler(message):
     logger(message)
     user_id = message.from_user.id
     if message.text == "🔎 Check":
-        bot.send_message(user_id, "🔗 Send me hash of USDT TRC20 Transaction:")
+        bot.send_message(user_id, "🔗 Send me hash of USDT TRC20 Transaction:",
+                         reply_to_message_id=message.message_id)
         bot.register_next_step_handler(message, process_usdt_trc20)
 
 
